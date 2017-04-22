@@ -1,0 +1,23 @@
+{
+  "name": "node-js-sample",
+  "version": "0.1.0",
+  "description": "A sample Node.js app using Express 4",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.0.0",
+    "node-core-audio": "*",
+    "socket.io": "*",
+    "node-lifx": "*",
+    "@google-cloud/speech" : "*",
+    "yargs": "*",
+    "node-record-lpcm16": "*",
+    "end-of-stream": "*"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+
+}
