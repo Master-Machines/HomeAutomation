@@ -1,96 +1,92 @@
 
 var voiceManager = function() {
-	streamingMicRecognize()
-}
-
-
-streamingMicRecognize = function() {
-  // [START speech_streaming_mic_recognize]
-  const record = require('node-record-lpcm16');
-
-  // Imports the Google Cloud client library
-  const Speech = require('@google-cloud/speech');
-
-  // Your Google Cloud Platform project ID
+	
+	const encoding = 'LINEAR16';
+	const sampleRateHertz = 16000;
+	const languageCode = 'en-US';
+	const config = {
+	  encoding: encoding,
+	  sampleRateHertz: sampleRateHertz,
+	  languageCode: languageCode
+	}
+	const record = require('node-record-lpcm16');
+	const Speech = require('@google-cloud/speech');
 	const projectId = 'derekschindhelmsite';
-
-  // Instantiates a client
-  const speech = Speech({
-	projectId: projectId
-  });
-
-  // The encoding of the audio file, e.g. 'LINEAR16'
-  const encoding = 'LINEAR16';
-
-  // The sample rate of the audio file in hertz, e.g. 16000
-  const sampleRateHertz = 16000;
-
-  // The BCP-47 language code to use, e.g. 'en-US'
-  const languageCode = 'en-US';
-const config = {
-      encoding: encoding,
-      sampleRateHertz: sampleRateHertz,
-      languageCode: languageCode
-    }
-  const request = {
-    config: config,
-    singleUtterance: false,
-    interimRconfig: {
-      encoding: encoding,
-      sampleRateHertz: sampleRateHertz,
-      languageCode: languageCode
-    },esults: false
-  };
-
-  // Create a recognize stream
-  // const recognizeStream = speech.createRecognizeStream(request)
-  //   .on('error', console.error)
-  //   .on('data', (data) => console.log(data.results))
-  //   .on('write', (writing) => console.log(writing))
-  //   .on('response', (response) => console.log(response));
-
-	var fs = require('fs');
-    var file = fs.createWriteStream('test.wav', { encoding: 'binary' })
-    var eos = require('end-of-stream');
-    var isRecording = true
-
-    eos(file, function(err) {
-    	isRecording = false
-		if (err) return console.log('stream had an error or closed early');
-		// fs.createReadStream('./test.wav')
-	 //    .on('error', console.error)
-	 //    .pipe(speech.createRecognizeStream(request))
-	 //    .on('error', console.error)
-	 //    .on('data', function(data) {
-	 //      console.log(data.results)
-	 //    });
-	 streamingMicRecognize()
-	    speech.recognize("./test.wav", config)
-	    .then((results) => {
-	      const transcription = results[0];
-
-	      console.log(':' + `${transcription}`);
-	      
-	    })
-	    .catch((err) => {
-	      console.error('ERROR:', err);
-	    });
+	const speech = Speech({
+		projectId: projectId
 	});
-  // Start recording and send the microphone input to the Speech API
-  record.start({
-    sampleRateHertz: sampleRateHertz,
-    thresholdStart: 0.05,
-    thresholdEnd: 0,
-    recordProgram: 'sox',
-    verbose: false,
-    useSilence: false,
-    asRaw: false
-  }).pipe(file)
- 
-  setTimeout(function(){ if(isRecording) record.stop() }, 2000)
+	const fs = require('fs');
+	const eos = require('end-of-stream');
 
-  // console.log('Listening, press Ctrl+C to stop.');
-  // [END speech_streaming_mic_recognize]
+	const maxBufferHistory = 10
+	var counter = 0
+	const maxSpeechStackSize = 3
+	var speechStack = []
+
+	
+
+	streamingMicRecognize = function() {
+		var fileName = getCurrentBufferFile()
+	    var file = fs.createWriteStream(fileName, { encoding: 'binary' })
+	    var isRecording = true
+	    eos(file, function(err) {
+	    	isRecording = false
+	    	streamingMicRecognize()
+			if (err) return console.log('stream had an error or closed early');
+		    speech.recognize(fileName, config)
+		    .then((results) => {
+		      const transcription = results[0];
+		      addToSpeechStack(transcription)
+		      console.log(':' + `${transcription}`);
+		      console.log(getTotalSpeechStack())
+		    })
+		    .catch((err) => {
+		      console.error('ERROR:', err);
+		    });
+		});
+
+		record.start({
+			sampleRateHertz: sampleRateHertz,
+			thresholdStart: 0.05,
+			thresholdEnd: 0,
+			recordProgram: 'sox',
+			verbose: false,
+			useSilence: false,
+			asRaw: false
+		}).pipe(file)
+	 
+		setTimeout(function(){ if(isRecording) record.stop() }, 1500)
+		if(++counter == maxBufferHistory) counter = 0
+	}
+
+	getCurrentBufferFile = function() {
+		return "./voice_recog_samples/sample" + counter + ".wav"
+	}
+
+	clearSpeechStack = function() {
+		speechStack = []
+		for(var i = 0; i < maxSpeechStackSize; i++) {
+			speechStack.push('')
+		}
+	}
+	clearSpeechStack()
+
+	addToSpeechStack = function(data) {
+		for(var i = maxSpeechStackSize - 1; i > 0; i--) {
+			speechStack[i - 1] = speechStack [i]
+		}
+		speechStack[maxSpeechStackSize - 1] = data
+	}
+
+	getTotalSpeechStack = function() {
+		var totalSpeech = ""
+		for(var i = 0; i < maxSpeechStackSize; i++) {
+			totalSpeech += speechStack[i] + " "
+		}
+		return totalSpeech
+	}
+
+	streamingMicRecognize()
 }
 
 module.exports = voiceManager;
