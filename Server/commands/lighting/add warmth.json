@@ -1,0 +1,11 @@
+{
+	"name": "make warmer",
+	"triggerWords": ["warm", "light"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "addWarmth",
+			"quantity": -1500
+		}
+	]
+}

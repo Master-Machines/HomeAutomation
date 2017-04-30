@@ -16,10 +16,11 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var FFT = require('fft');
 var lightManager = require('./lightManager');
-var lightManagerInstance = lightManager()
+// lightManager.setColorForAllLights(0,0,0, null, null)
+var commandManager = require('./commandManager');
+// var lightManagerInstance = lightManager()
 
 var voiceManager = require('./voiceManager');
-var voiceManagerInstance = voiceManager()
 
 app.use(express.static(__dirname + '/public'))
 io.on('connection', function(){ 

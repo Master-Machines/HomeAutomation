@@ -14,7 +14,9 @@
     "@google-cloud/speech" : "*",
     "yargs": "*",
     "node-record-lpcm16": "*",
-    "end-of-stream": "*"
+    "end-of-stream": "*",
+    "node-dir": "*",
+    "css-color-names": "*"
   },
   "engines": {
     "node": "0.10.x"

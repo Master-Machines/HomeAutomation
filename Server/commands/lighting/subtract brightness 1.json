@@ -1,0 +1,12 @@
+{
+	"name": "decrease brightness",
+	"triggerWords": ["brightness", "decrease"],
+	"priority": 1,
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "addBrightness",
+			"quantity": -15
+		}
+	]
+}

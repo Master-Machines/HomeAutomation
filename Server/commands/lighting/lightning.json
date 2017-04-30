@@ -1,0 +1,20 @@
+{
+	"name": "lightning",
+	"triggerWords": ["lightning"],
+	"sequences": [
+		{
+			"type": "lighting",
+			"color": { "hue": 0, "saturation": 0, "brightness": 0}
+		},
+		{
+			"startTime": 500,
+			"type": "lighting",
+			"color": { "hue": 0, "saturation": 0, "brightness": 100, "kelvin": 9000}
+		},
+		{
+			"startTime": 650,
+			"type": "lighting",
+			"color": { "hue": 0, "saturation": 0, "brightness": 0}
+		}
+	]
+}

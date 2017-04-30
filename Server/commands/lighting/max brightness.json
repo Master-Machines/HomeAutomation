@@ -1,0 +1,12 @@
+{
+	"name": "max brightness",
+	"triggerWords": ["brightness", "max"],
+	"priority": 1,
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "addBrightness",
+			"quantity": 100
+		}
+	]
+}

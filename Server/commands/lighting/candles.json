@@ -1,0 +1,11 @@
+{
+	"name": "candles",
+	"triggerWords": ["candle"],
+	"sequences": [
+		{
+			"type": "lighting",
+			"duration": 3000,
+			"color": { "hue": 0, "saturation": 0, "brightness": 3, "kelvin": 2500}
+		}
+	]
+}

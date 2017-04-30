@@ -1,0 +1,11 @@
+{
+	"name": "change color",
+	"triggerWords": ["color"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "setColor",
+			"duration": 500
+		}
+	]
+}

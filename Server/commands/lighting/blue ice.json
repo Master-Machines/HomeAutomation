@@ -1,0 +1,12 @@
+{
+	"name": "max cold",
+	"triggerWords": ["blue", "arctic"],
+	"sequences": [
+		{
+			"type": "logic",
+			"duration": 500,
+			"functionName": "addWarmth",
+			"quantity": 10000
+		}
+	]
+}

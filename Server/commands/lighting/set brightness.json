@@ -1,0 +1,10 @@
+{
+	"name": "set brightness",
+	"triggerWords": ["brightness"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "setBrightness"
+		}
+	]
+}
