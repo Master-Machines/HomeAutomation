@@ -14,7 +14,6 @@ var express = require('express')
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-var FFT = require('fft');
 var lightManager = require('./lightManager');
 // lightManager.setColorForAllLights(0,0,0, null, null)
 var commandManager = require('./commandManager');

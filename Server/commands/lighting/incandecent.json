@@ -5,7 +5,7 @@
 		{
 			"type": "lighting",
 			"duration": 2000,
-			"color": { "hue": 0, "saturation": 0, "brightness": 60, "kelvin": 3000}
+			"color": { "hue": 0, "saturation": 0, "brightness": 50, "kelvin": 3000}
 		}
 	]
 }

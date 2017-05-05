@@ -24,6 +24,7 @@ const maxBufferHistory = 10
 const maxSpeechStackSize = 8
 var speechStack = []
 
+const load = require('audio-loader')
 
 var voiceManager = function() {
 	streamingMicRecognize = function(filebaseName, counter) {
@@ -34,18 +35,20 @@ var voiceManager = function() {
 	    eos(file, function(err) {
 	    	isRecording = false
 	    	streamingMicRecognize(filebaseName, counter)
-			if (err) return console.log('stream had an error or closed early');
-		    speech.recognize(fileName, config)
-		    .then((results) => {
-		      const transcription = results[0];
-		      addToSpeechStack(transcription)
-		      if(transcription.length > 0) console.log("you: " + `${transcription}`);
-		      console.log(getTotalSpeechStack())
-		      commandManager.detectCommands(getTotalSpeechStack())
-		    })
-		    .catch((err) => {
-		      console.error('ERROR:', err);
-		    });
+			if (err) return console.log('stream had an error or closed early ' + err);
+			load({name: fileName, gain: 1.5}).then(function(audio) {
+				 speech.recognize(fileName, config)
+				    .then((results) => {
+				      const transcription = results[0];
+				      addToSpeechStack(transcription)
+				      if(transcription.length > 0) console.log("you: " + `${transcription}`);
+				      console.log(getTotalSpeechStack())
+				      commandManager.detectCommands(getTotalSpeechStack())
+				    })
+				    .catch((err) => {
+				      console.error('ERROR:', err);
+				    });
+			})
 		});
 
 		record.start({

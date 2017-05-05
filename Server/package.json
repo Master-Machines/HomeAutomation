@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "express": "^4.0.0",
-    "node-core-audio": "*",
     "socket.io": "*",
     "node-lifx": "*",
     "@google-cloud/speech" : "*",
@@ -16,7 +15,8 @@
     "node-record-lpcm16": "*",
     "end-of-stream": "*",
     "node-dir": "*",
-    "css-color-names": "*"
+    "css-color-names": "*",
+    "audio-loader": "*"
   },
   "engines": {
     "node": "0.10.x"
