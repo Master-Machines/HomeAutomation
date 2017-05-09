@@ -24,8 +24,6 @@ const maxBufferHistory = 10
 const maxSpeechStackSize = 8
 var speechStack = []
 
-const load = require('audio-loader')
-
 var voiceManager = function() {
 	streamingMicRecognize = function(filebaseName, counter) {
 		counter ++
@@ -36,8 +34,7 @@ var voiceManager = function() {
 	    	isRecording = false
 	    	streamingMicRecognize(filebaseName, counter)
 			if (err) return console.log('stream had an error or closed early ' + err);
-			load({name: fileName, gain: 1.5}).then(function(audio) {
-				 speech.recognize(fileName, config)
+			speech.recognize(fileName, config)
 				    .then((results) => {
 				      const transcription = results[0];
 				      addToSpeechStack(transcription)
@@ -48,7 +45,6 @@ var voiceManager = function() {
 				    .catch((err) => {
 				      console.error('ERROR:', err);
 				    });
-			})
 		});
 
 		record.start({
@@ -60,7 +56,7 @@ var voiceManager = function() {
 			useSilence: false,
 			asRaw: false
 		}).pipe(file)
-	 
+
 		setTimeout(function(){ if(isRecording) record.stop() }, 3000)
 		if(counter >= maxBufferHistory) counter = 0
 	}

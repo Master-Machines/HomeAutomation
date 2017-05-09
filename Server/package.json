@@ -16,7 +16,10 @@
     "end-of-stream": "*",
     "node-dir": "*",
     "css-color-names": "*",
-    "audio-loader": "*"
+    "audio-loader": "*",
+    "play-sound": "*",
+    "node-core-audio": "*",
+    "fft-js": "*"
   },
   "engines": {
     "node": "0.10.x"

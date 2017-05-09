@@ -13,6 +13,8 @@ var lightManager = (function() {
 				console.log("error getting light state")
 				return
 			}
+			light.on()
+			light.custom_name = data.label
 			light.custom_hue = data.color.hue
 			light.custom_saturation = data.color.saturation
 			light.custom_brightness = data.color.brightness
@@ -44,6 +46,29 @@ var setColorForAllLights = function(hue, saturation, brightness, duration, kelvi
 		lights[i].custom_hue = newHue
 		lights[i].custom_saturation = newSaturation
 		lights[i].custom_kelvin = newKelvin
+	}
+}
+
+var setColorForLightByName = function(name, hue, saturation, brightness, duration, kelvin, callback) {
+	if(duration == null) duration = 0
+	for(var i = 0; i < lights.length; i++)  {
+		if(lights[i].custom_name == name) {
+			var newHue = hue
+			if(newHue == null) newHue = lights[i].custom_hue
+			var newSaturation = saturation
+			if(newSaturation == null) newSaturation = lights[i].custom_saturation
+			var newBrightness = brightness
+			if(newBrightness == null) newBrightness = lights[i].custom_brightness
+			var newKelvin = kelvin
+			if(newKelvin == null) newKelvin = lights[i].custom_kelvin
+			if(newKelvin == null) newKelvin = 3500
+
+			lights[i].color(newHue, newSaturation, newBrightness, newKelvin, duration)
+			lights[i].custom_brightness = newBrightness
+			lights[i].custom_hue = newHue
+			lights[i].custom_saturation = newSaturation
+			lights[i].custom_kelvin = newKelvin
+		}
 	}
 }
 
@@ -90,3 +115,14 @@ exports.setColorForAllLights = setColorForAllLights
 exports.setHexColorForAllLights = setHexColorForAllLights
 exports.setBrightnessForAllLights = setBrightnessForAllLights
 exports.addColorForAllLights = addColorForAllLights
+exports.setColorForLightByName = setColorForLightByName
+
+
+
+/**
+Tall Lamp
+Table Lamp
+Bed Light
+Shade Cylinder
+Entrance
+*/

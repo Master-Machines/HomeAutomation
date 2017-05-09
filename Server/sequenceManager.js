@@ -1,7 +1,8 @@
 var voiceManager = require('./voiceManager')
-var csscolors = require('css-color-names');
-var lightManager = require('./lightManager');
+var csscolors = require('css-color-names')
+var lightManager = require('./lightManager')
 var voiceManager = require('./voiceManager')
+var audioManager = require('./audioManager')
 
 var sequenceManager = (function() {
 	var colors = []
@@ -24,11 +25,15 @@ var triggerSequence = function(sequence) {
 		voiceManager.clearSpeechStack()
 		var lightManager = require('./lightManager');
 		var duration = sequence.data.duration
-		lightManager.setColorForAllLights(sequence.data.color.hue, sequence.data.color.saturation, sequence.data.color.brightness, duration, sequence.data.color.kelvin, null)
+		var name = sequence.data.lightName
+		if(name) {
+			lightManager.setColorForLightByName(name, sequence.data.color.hue, sequence.data.color.saturation, sequence.data.color.brightness, duration, sequence.data.color.kelvin, null)
+		} else {
+			lightManager.setColorForAllLights(sequence.data.color.hue, sequence.data.color.saturation, sequence.data.color.brightness, duration, sequence.data.color.kelvin, null)
+		}
 	} else if (sequence.type == "logic") {
 
 		var funcName = sequence.data.functionName
-		console.log("triggerSequence " + funcName)
 		logicFunctions[funcName](sequence)
 	} 
 }
@@ -69,6 +74,11 @@ logicFunctions.addBrightness = function(sequence) {
 logicFunctions.addWarmth = function(sequence) {
 	voiceManager.clearSpeechStack()
 	lightManager.addColorForAllLights(0, 0, 0, 500, sequence.data.quantity, 0)
+}
+
+logicFunctions.playAudioFile = function(sequence) {
+	voiceManager.clearSpeechStack()
+	audioManager.playAudioFile(sequence.data.fileName)
 }
 
 

@@ -11,18 +11,17 @@
 // })();
 
 var express = require('express')
-var app = express();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
-var lightManager = require('./lightManager');
-// lightManager.setColorForAllLights(0,0,0, null, null)
-var commandManager = require('./commandManager');
-// var lightManagerInstance = lightManager()
-
-var voiceManager = require('./voiceManager');
-
+var app = express()
+var server = require('http').Server(app)
+var io = require('socket.io')(server)
+var lightManager = require('./lightManager')
+var commandManager = require('./commandManager')
+var voiceManager = require('./voiceManager')
+var djManager = require('./djManager')
 app.use(express.static(__dirname + '/public'))
 io.on('connection', function(){ 
 	console.log("NEW CONNECTION")
 });
 server.listen(5000);
+
+

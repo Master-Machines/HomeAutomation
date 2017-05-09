@@ -24,6 +24,9 @@ var commandManager = (function() {
 	        	allTriggerWords.push(word)
 	        })
 	        commandList.push(newCommand)
+	        if(newCommand.commandName == "the grid") {
+	        //	performCommand(newCommand, [""])
+	        }
 	        next()
 	    },
 	    function(err, files){
@@ -35,7 +38,7 @@ var commandManager = (function() {
 	        console.log('finished reading files:', files);
 	    });
 	// TODO: Sort the command list by priority
-	
+
 
 })()
 

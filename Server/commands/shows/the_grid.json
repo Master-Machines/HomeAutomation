@@ -1,0 +1,50 @@
+{
+	"name": "the grid",
+	"triggerWords": ["grid"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "playAudioFile",
+			"fileName": "music/the_grid.mp3"
+		},
+		{
+			"type": "lighting",
+			"duration": 1000,
+			"color": { "hue": 240, "saturation": 100, "brightness": 0}
+		},
+		{
+			"type": "lighting",
+			"startTime": 2000,
+			"duration": 5000,
+			"color": { "hue": 240, "saturation": 50, "brightness": 10}
+		},
+		{
+			"type": "lighting",
+			"duration": 350,
+			"startTime": 10250,
+			"lightName": "Tall Lamp",
+			"color": { "hue": 240, "saturation": 100, "brightness": 70}
+		},
+		{
+			"type": "lighting",
+			"duration": 350,
+			"startTime": 12750,
+			"lightName": "Table Lamp",
+			"color": { "hue": 300, "saturation": 100, "brightness": 70}
+		},
+		{
+			"type": "lighting",
+			"duration": 350,
+			"startTime": 15250,
+			"lightName": "Shade Cylinder",
+			"color": { "hue": 240, "saturation": 100, "brightness": 70}
+		},
+		{
+			"type": "lighting",
+			"duration": 350,
+			"startTime": 17500,
+			"lightName": "Entrance",
+			"color": { "hue": 300, "saturation": 100, "brightness": 70}
+		}
+	]
+}
