@@ -1,0 +1,36 @@
+{
+	"name": "arcade",
+	"triggerWords": ["arcade"],
+	"sequences": [
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Tall Lamp",
+			"color": { "hue": 304, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Table Lamp",
+			"color": { "hue": 180, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Shade Cylinder",
+			"color": { "hue": 328, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Entrance",
+			"color": { "hue": 236, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Kitchen",
+			"color": { "hue": 128, "saturation": 100, "brightness": 100}
+		}
+	]
+}

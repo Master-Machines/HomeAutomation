@@ -1,0 +1,12 @@
+{
+	"name": "kitchen power on",
+	"triggerWords": ["kitchen", "on"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "setLightsPower",
+			"lightNames": ["Entrance", "Kitchen"],
+			"powerStatus": true
+		}
+	]
+}

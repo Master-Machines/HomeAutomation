@@ -1,0 +1,12 @@
+{
+	"name": "bedroom power off",
+	"triggerWords": ["bedroom", "off"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "setLightsPower",
+			"lightNames": ["Bed Light"],
+			"powerStatus": false
+		}
+	]
+}

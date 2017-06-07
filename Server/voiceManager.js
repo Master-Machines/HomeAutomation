@@ -21,7 +21,7 @@ const eos = require('end-of-stream');
 const commandManager = require('./commandManager')
 console.log(commandManager.test)
 const maxBufferHistory = 10
-const maxSpeechStackSize = 8
+const maxSpeechStackSize = 4
 var speechStack = []
 
 var voiceManager = function() {

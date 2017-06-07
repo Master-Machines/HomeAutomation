@@ -1,0 +1,103 @@
+{
+	"name": "thunderstruck",
+	"triggerWords": ["thunderstruck", "play"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "playAudioFile",
+			"fileName": "music/thunderstruck.mp3"
+		},
+		{
+			"type": "lighting",
+			"duration": 1000,
+			"color": { "hue": 240, "saturation": 0, "brightness": 50, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"startTime": 29500,
+			"duration": 0,
+			"color": { "hue": 0, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"startTime": 33000,
+			"color": { "hue": 176, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"startTime": 37000,
+			"color": { "hue": 110, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"startTime": 40200,
+			"color": { "hue": 111, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"startTime": 44000,
+			"color": { "hue": 26, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"startTime": 47400,
+			"color": { "hue": 107, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"startTime": 51000,
+			"color": { "hue": 0, "saturation": 0, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"startTime": 54000,
+			"color": { "hue": 300, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"startTime": 57800,
+			"color": { "hue": 62, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"startTime": 61000,
+			"color": { "hue": 0, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"startTime": 70000,
+			"color": { "hue": 238, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"startTime": 78000,
+			"color": { "hue": 185, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"startTime": 85000,
+			"color": { "hue": 100, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"startTime": 92000,
+			"color": { "hue": 300, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"startTime": 100000,
+			"color": { "hue": 203, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "lighting",
+			"duration": 500,
+			"startTime": 109500,
+			"color": { "hue": 238, "saturation": 100, "brightness": 0}
+		},
+		{
+			"type": "lighting",
+			"startTime": 112000,
+			"color": { "hue": 238, "saturation": 0, "brightness": 100, "kelvin": 9000}
+		}
+	]
+}

@@ -1,0 +1,12 @@
+{
+	"name": "living room power on",
+	"triggerWords": ["living", "room", "on"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "setLightsPower",
+			"lightNames": ["Tall Lamp", "Table Lamp", "Shade Cylinder"],
+			"powerStatus": true
+		}
+	]
+}

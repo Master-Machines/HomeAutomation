@@ -1,0 +1,36 @@
+{
+	"name": "movie mode",
+	"triggerWords": ["movie", "watch"],
+	"sequences": [
+		{
+			"type": "lighting",
+			"duration": 2000,
+			"lightName": "Tall Lamp",
+			"color": { "hue": 0, "saturation": 0, "brightness": 12, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 2000,
+			"lightName": "Table Lamp",
+			"color": { "hue": 206, "saturation": 70, "brightness": 18, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 2000,
+			"lightName": "Shade Cylinder",
+			"color": { "hue": 206, "saturation": 100, "brightness": 5}
+		},
+		{
+			"type": "lighting",
+			"duration": 2000,
+			"lightName": "Entrance",
+			"color": { "hue": 0, "saturation": 0, "brightness": 12, "kelvin": 2500 }
+		},
+		{
+			"type": "lighting",
+			"duration": 2000,
+			"lightName": "Kitchen",
+			"color": { "hue": 206, "saturation": 70, "brightness": 18, "kelvin": 2500 }
+		}
+	]
+}

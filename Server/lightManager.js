@@ -13,7 +13,6 @@ var lightManager = (function() {
 				console.log("error getting light state")
 				return
 			}
-			light.on()
 			light.custom_name = data.label
 			light.custom_hue = data.color.hue
 			light.custom_saturation = data.color.saturation
@@ -23,9 +22,6 @@ var lightManager = (function() {
 
 	client.init();
 	console.log("light manager instance")
-
-	
-
 })()
 
 var setColorForAllLights = function(hue, saturation, brightness, duration, kelvin, callback) {
@@ -94,14 +90,51 @@ var addColorForAllLights = function(hue, saturation, brightness, duration, kelvi
 }
 
 var setHexColorForAllLights = function(hexCode, duration, callback) {
-	console.log("Setting color with hex code: " + hexCode)
 	var hsb = LifxUtil.rgbToHsb(LifxUtil.rgbHexStringToObject(hexCode))
-	setColorForAllLights(hsb.h, hsb.s, 30, duration, 3500, callback)
+	setColorForAllLights(hsb.h, hsb.s, null, duration, 3500, callback)
 }
 
 var setBrightnessForAllLights = function(brightness) {
-	console.log("setting brightness: " + brightness)
 	setColorForAllLights(null, null, brightness, null, null, null)
+}
+
+var setLightsPowerStatus = function(lightNames, on) {
+	lights.forEach(function(light) {
+		lightNames.forEach(function(lightName) {
+			if(light.custom_name == lightName) {
+				if(on) {
+					light.on(500)
+				} else {
+					light.off(500)
+				}
+			}
+		})		
+	})
+}
+
+var setAllLightsPowerStatus = function(on) {
+	lights.forEach(function(light) {
+		if(on) {
+			light.on(500)
+		} else {
+			light.off(500)
+		}	
+	})
+}
+
+// var getLightSnapshots = function() {
+// 	var lightSnapshotArray = []
+// 	for (var i = 0; i < lights.length, i++) {
+// 		lightSnapshotArray.push(new lightSnapshot(lights[i].custom_brightness), lights[i].custom_hue, lights[i].custom_saturation, lights[i].custom_kelvin)
+// 	}
+// 	return lightSnapshotArray
+// }
+
+var lightSnapshot = function(brightness, hue, saturation, kelvin) {
+	this.brightness = brightness
+	this.hue = hue
+	this.saturation = saturation
+	this.kelvin = kelvin
 }
 
 var clampValue = function(val, min, max) {
@@ -116,7 +149,8 @@ exports.setHexColorForAllLights = setHexColorForAllLights
 exports.setBrightnessForAllLights = setBrightnessForAllLights
 exports.addColorForAllLights = addColorForAllLights
 exports.setColorForLightByName = setColorForLightByName
-
+exports.setLightsPowerStatus = setLightsPowerStatus
+exports.setAllLightsPowerStatus = setAllLightsPowerStatus
 
 
 /**
@@ -125,4 +159,5 @@ Table Lamp
 Bed Light
 Shade Cylinder
 Entrance
+Kitchen
 */

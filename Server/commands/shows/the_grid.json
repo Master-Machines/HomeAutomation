@@ -1,6 +1,6 @@
 {
 	"name": "the grid",
-	"triggerWords": ["grid"],
+	"triggerWords": ["grid fdsfjsdkfl;jsd"],
 	"sequences": [
 		{
 			"type": "logic",

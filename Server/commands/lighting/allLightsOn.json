@@ -1,0 +1,11 @@
+{
+	"name": "all lights on",
+	"triggerWords": ["all", "lights", "on"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "allTheLightsPower",
+			"powerStatus": true
+		}
+	]
+}

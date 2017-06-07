@@ -81,6 +81,18 @@ logicFunctions.playAudioFile = function(sequence) {
 	audioManager.playAudioFile(sequence.data.fileName)
 }
 
+logicFunctions.setLightsPower = function(sequence) {
+	lightManager.setLightsPowerStatus(sequence.data.lightNames, sequence.data.powerStatus)
+}
+
+logicFunctions.allTheLightsPower = function(sequence) {
+	lightManager.setAllLightsPowerStatus(sequence.data.powerStatus)
+}
+
+logicFunctions.saveLightState = function(sequence) {
+
+}
+
 
 
 exports.manager = sequenceManager
