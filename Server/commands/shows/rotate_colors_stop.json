@@ -1,0 +1,10 @@
+{
+	"name": "color rotation",
+	"triggerWords": ["stop", "lights"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "stopRotating"
+		}
+	]
+}

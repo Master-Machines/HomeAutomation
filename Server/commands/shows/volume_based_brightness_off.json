@@ -1,0 +1,10 @@
+{
+	"name": "music lighting",
+	"triggerWords": ["music", "disable"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "disableVolumeBrightness"
+		}
+	]
+}

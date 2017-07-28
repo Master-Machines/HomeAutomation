@@ -3,6 +3,10 @@
 	"triggerWords": ["incandescent"],
 	"sequences": [
 		{
+			"type": "logic",
+			"functionName": "stopRotating"
+		},
+		{
 			"type": "lighting",
 			"duration": 2000,
 			"color": { "hue": 0, "saturation": 0, "brightness": 50, "kelvin": 3000}

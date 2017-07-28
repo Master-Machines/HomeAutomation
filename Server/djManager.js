@@ -40,7 +40,7 @@ var lightConfig = (function(light, volumeMap, color, baseBrightness, maxBrightne
 
 		this.broadcastBrightness = function() {
 			if(Math.abs(this.currentBrightness - this.lastBroadcastedBrightness) > 1) {
-				lightManager.setColorForLightByName(this.lightName, this.color, 100, this.currentBrightness, 70)
+				lightManager.setBrightnessForLightByName(this.lightName, this.currentBrightness, 0)
 				this.lastBroadcastedBrightness = this.currentBrightness
 			}
 			var that = this
@@ -56,12 +56,14 @@ var lightConfig = (function(light, volumeMap, color, baseBrightness, maxBrightne
 
 // Colors: blue: 242 teal: 176 pinkish: 304
 
-lightConfigs.push(new lightConfig("Tall Lamp", true, 48, 35, 70))
-lightConfigs.push(new lightConfig("Table Lamp", true, 48, 35, 70))
-lightConfigs.push(new lightConfig("Shade Cylinder", true, 48, 35, 70))
-lightConfigs.push(new lightConfig("Entrance", true, 48, 35, 70))
+//lightConfigs.push(new lightConfig("Tall Lamp", true, 48, 25, 100))
+lightConfigs.push(new lightConfig("Table Lamp", true, 48, 25, 100))
+lightConfigs.push(new lightConfig("Shade Cylinder", true, 48, 25, 100))
+//lightConfigs.push(new lightConfig("Entrance", true, 48, 25, 100))
+//lightConfigs.push(new lightConfig("Kitchen", true, 48, 25, 100))
 
 
+var checkForBeats = false
 
 function processAudio( inputBuffer ) {
   	var freqs = []
@@ -75,32 +77,28 @@ function processAudio( inputBuffer ) {
     for(var i = 0; i < magnitudes.length; i++) {
  		magnitude += magnitudes[i]
  	}
- 	//checkForBeat(magnitude)
+ 	if(checkForBeats) {
+ 		checkForBeat(magnitude)
+ 	}
     return inputBuffer;
 }
 
-var previousSampleCount = 15
+var previousSampleCount = 4
 var previousSamples = Array(previousSampleCount)
 
 function checkForBeat(magnitude) {
 	var average = averageValueFromArray(previousSamples)
-	var brightness = magnitude / 20
-	console.log(brightness)
+	var brightness = Math.sqrt(magnitude)
+	if (brightness < 5) {
+		brightness = 0
+	}
 	lightConfigs.forEach(function(config) {
 		if(config.isVolumeMap) {
 			config.update(brightness)
 		}
 	})
-	if(magnitude > 2.5 * average) {
-		lightConfigs.forEach(function(config) {
-			if(!config.isVolumeMap) {
-				config.trigger()
-			}
-		})
-		adjustPreviousSampleCount(magnitude * 1)
-	} else {
-		adjustPreviousSampleCount(magnitude)
-	}
+
+	adjustPreviousSampleCount(magnitude)
 }
 
 function adjustPreviousSampleCount(newSample) {
@@ -120,11 +118,20 @@ function averageValueFromArray(arr) {
 
 engine.addAudioCallback( processAudio );
 
+function listen() {
+	checkForBeats = true
+}
 
-var djManager = (function() {
+function stopListening() {
+	checkForBeats = false
+}
 
-})
+function isListening() {
+	return checkForBeats
+}
 
 
 
-exports.manager = djManager
+exports.listen = listen
+exports.stopListening = stopListening
+exports.isListening = isListening

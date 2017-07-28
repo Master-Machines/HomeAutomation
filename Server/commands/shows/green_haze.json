@@ -1,0 +1,47 @@
+{
+	"name": "green haze",
+	"triggerWords": ["green", "haze"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "stopRotating"
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Tall Lamp",
+			"color": { "hue": 125, "saturation": 100, "brightness": 100, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Table Lamp",
+			"color": { "hue": 125, "saturation": 100, "brightness": 85, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Shade Cylinder",
+			"color": { "hue": 125, "saturation": 100, "brightness": 70, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Kitchen",
+			"color": { "hue": 125, "saturation": 100, "brightness": 60, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Entrance",
+			"color": { "hue": 125, "saturation": 100, "brightness": 75, "kelvin": 2500}
+		},
+		{
+			"type": "logic",
+			"functionName": "rotateColors",
+			"duration": 700,
+			"delay": 100,
+			"startTime": 1000
+		}
+	]
+}

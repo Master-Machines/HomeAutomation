@@ -7,22 +7,21 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.0.0",
-    "socket.io": "*",
-    "node-lifx": "*",
-    "@google-cloud/speech" : "*",
-    "yargs": "*",
-    "node-record-lpcm16": "*",
-    "end-of-stream": "*",
-    "node-dir": "*",
-    "css-color-names": "*",
+    "@google-cloud/speech": "*",
     "audio-loader": "*",
-    "play-sound": "*",
+    "css-color-names": "*",
+    "end-of-stream": "*",
+    "express": "^4.15.3",
+    "fft-js": "*",
     "node-core-audio": "*",
-    "fft-js": "*"
+    "node-dir": "*",
+    "node-lifx": "*",
+    "node-record-lpcm16": "*",
+    "play-sound": "*",
+    "socket.io": "*",
+    "yargs": "*"
   },
   "engines": {
     "node": "0.10.x"
   }
-
 }

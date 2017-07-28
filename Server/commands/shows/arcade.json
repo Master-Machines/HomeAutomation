@@ -3,6 +3,10 @@
 	"triggerWords": ["arcade"],
 	"sequences": [
 		{
+			"type": "logic",
+			"functionName": "stopRotating"
+		},
+		{
 			"type": "lighting",
 			"duration": 0,
 			"lightName": "Tall Lamp",
@@ -31,6 +35,13 @@
 			"duration": 0,
 			"lightName": "Kitchen",
 			"color": { "hue": 128, "saturation": 100, "brightness": 100}
+		},
+		{
+			"type": "logic",
+			"functionName": "rotateColors",
+			"duration": 6000,
+			"delay": 10000,
+			"startTime": 10
 		}
 	]
 }

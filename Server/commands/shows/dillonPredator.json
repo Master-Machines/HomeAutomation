@@ -1,0 +1,61 @@
+{
+	"name": "dillon",
+	"triggerWords": ["epic", "hand"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "playAudioFile",
+			"fileName": "dillonPredator.mp3"
+		},
+		{
+			"type": "lighting",
+			"duration": 500,
+			"color": { "hue": 240, "saturation": 0, "brightness": 0}
+		},
+		{
+			"type": "lighting",
+			"lightName": "Entrance",
+			"duration": 100,
+			"startTime": 3950,
+			"color": { "hue": 250, "saturation": 100, "brightness": 100, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"lightName": "Kitchen",
+			"duration": 100,
+			"startTime": 3950,
+			"color": { "hue": 250, "saturation": 100, "brightness": 100, "kelvin": 2500}
+		},
+
+
+
+
+		{
+			"type": "lighting",
+			"lightName": "Tall Lamp",
+			"startTime": 9500,
+			"color": { "hue": 0, "saturation": 100, "brightness": 100, "kelvin": 2500}
+		}
+		,
+		{
+			"type": "lighting",
+			"lightName": "Table Lamp",
+			"startTime": 9500,
+			"color": { "hue": 100, "saturation": 100, "brightness": 100, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"lightName": "Shade Cylinder",
+			"startTime": 9500,
+			"color": { "hue": 150, "saturation": 100, "brightness": 100, "kelvin": 2500}
+		},
+
+
+		{
+			"type": "lighting",
+			"duration": 1000,
+			"startTime": 13000,
+			"color": { "hue": 240, "saturation": 0, "brightness": 75, "kelvin": 2500}
+		}
+	]
+}

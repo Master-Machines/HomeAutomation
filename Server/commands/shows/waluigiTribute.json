@@ -1,0 +1,57 @@
+{
+	"name": "Waluigi",
+	"triggerWords": ["waluigi", "tribute"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "stopRotating"
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Tall Lamp",
+			"color": { "hue": 255, "saturation": 100, "brightness": 85, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Table Lamp",
+			"color": { "hue": 260, "saturation": 100, "brightness": 0, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Shade Cylinder",
+			"color": { "hue": 260, "saturation": 100, "brightness": 95, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Kitchen",
+			"color": { "hue": 260, "saturation": 100, "brightness": 0, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Entrance",
+			"color": { "hue": 265, "saturation": 100, "brightness": 85, "kelvin": 2500}
+		},
+		{
+			"type": "logic",
+			"functionName": "playAudioFile",
+			"fileName": "waluigi.mp3"
+		},
+		{
+			"type": "logic",
+			"functionName": "rotateColors",
+			"duration": 200,
+			"delay": 0,
+			"startTime": 10
+		},
+		{
+			"startTime": 18000,
+			"type": "logic",
+			"functionName": "stopRotating"
+		}
+	]
+}

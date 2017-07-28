@@ -1,7 +1,12 @@
 {
 	"name": "lightning",
-	"triggerWords": ["lightning"],
+	"triggerWords": ["lightning", "strike"],
 	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "saveLightState",
+			"saveName": "saveName"
+		},
 		{
 			"type": "lighting",
 			"color": { "hue": 0, "saturation": 0, "brightness": 0}
@@ -15,6 +20,12 @@
 			"startTime": 650,
 			"type": "lighting",
 			"color": { "hue": 0, "saturation": 0, "brightness": 0}
+		},
+		{
+			"startTime": 1000,
+			"type": "logic",
+			"functionName": "loadLightState",
+			"saveName": "saveName"
 		}
 	]
 }

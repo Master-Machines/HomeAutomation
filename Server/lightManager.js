@@ -3,6 +3,7 @@ var LifxUtil = require('node-lifx').utils
 var client = new LifxClient();
 var lights = []
 
+
 var lightManager = (function() {
 	
 	client.on('light-new', function(light) {
@@ -17,31 +18,31 @@ var lightManager = (function() {
 			light.custom_hue = data.color.hue
 			light.custom_saturation = data.color.saturation
 			light.custom_brightness = data.color.brightness
+			light.custom_kelvin = data.color.kelvin
 		})
+
+		light.setColorAndState = function(hue, saturation, brightness, duration, kelvin) {
+			if (kelvin == null) { kelvin = this.custom_kelvin }
+			if (duration == null) { duration = 0 }
+			if (hue == null) { hue = this.custom_hue }
+			if (saturation == null) { saturation = this.custom_saturation }
+			if (brightness == null) {brightness = this.custom_brightness}
+
+			this.color(hue, saturation, brightness, kelvin, duration)
+			this.custom_brightness = brightness
+			this.custom_hue = hue
+			this.custom_saturation = saturation
+			this.custom_kelvin = kelvin
+		}
 	});
 
 	client.init();
-	console.log("light manager instance")
 })()
 
 var setColorForAllLights = function(hue, saturation, brightness, duration, kelvin, callback) {
 	if(duration == null) duration = 0
 	for(var i = 0; i < lights.length; i++)  {
-		var newHue = hue
-		if(newHue == null) newHue = lights[i].custom_hue
-		var newSaturation = saturation
-		if(newSaturation == null) newSaturation = lights[i].custom_saturation
-		var newBrightness = brightness
-		if(newBrightness == null) newBrightness = lights[i].custom_brightness
-		var newKelvin = kelvin
-		if(newKelvin == null) newKelvin = lights[i].custom_kelvin
-		if(newKelvin == null) newKelvin = 3500
-
-		lights[i].color(newHue, newSaturation, newBrightness, newKelvin, duration)
-		lights[i].custom_brightness = newBrightness
-		lights[i].custom_hue = newHue
-		lights[i].custom_saturation = newSaturation
-		lights[i].custom_kelvin = newKelvin
+		lights[i].setColorAndState(hue, saturation, brightness, duration, kelvin)
 	}
 }
 
@@ -49,23 +50,27 @@ var setColorForLightByName = function(name, hue, saturation, brightness, duratio
 	if(duration == null) duration = 0
 	for(var i = 0; i < lights.length; i++)  {
 		if(lights[i].custom_name == name) {
-			var newHue = hue
-			if(newHue == null) newHue = lights[i].custom_hue
-			var newSaturation = saturation
-			if(newSaturation == null) newSaturation = lights[i].custom_saturation
-			var newBrightness = brightness
-			if(newBrightness == null) newBrightness = lights[i].custom_brightness
-			var newKelvin = kelvin
-			if(newKelvin == null) newKelvin = lights[i].custom_kelvin
-			if(newKelvin == null) newKelvin = 3500
-
-			lights[i].color(newHue, newSaturation, newBrightness, newKelvin, duration)
-			lights[i].custom_brightness = newBrightness
-			lights[i].custom_hue = newHue
-			lights[i].custom_saturation = newSaturation
-			lights[i].custom_kelvin = newKelvin
+			lights[i].setColorAndState(hue, saturation, brightness, duration, kelvin)
 		}
 	}
+}
+
+var setBrightnessForLightByName = function(name, brightness, duration) {
+	if(duration == null) duration = 0
+	for(var i = 0; i < lights.length; i++)  {
+		if(lights[i].custom_name == name) {
+			lights[i].setColorAndState(lights[i].custom_hue, lights[i].custom_saturation, brightness, duration, lights[i].custom_kelvin)
+		}
+	}
+}
+
+var getLightByName = function(name) {
+	for(var i = 0; i < lights.length; i++)  {
+		if(lights[i].custom_name == name) {
+			return lights[i]
+		}
+	}
+	return null
 }
 
 var addColorForAllLights = function(hue, saturation, brightness, duration, kelvin, callback) {
@@ -81,11 +86,7 @@ var addColorForAllLights = function(hue, saturation, brightness, duration, kelvi
 		if(newKelvin == null) newKelvin = 3500
 		newKelvin += kelvin
 		newKelvin = clampValue(newKelvin, 2500, 9000)
-		lights[i].color(newHue, newSaturation, newBrightness, newKelvin, duration)
-		lights[i].custom_brightness = newBrightness
-		lights[i].custom_hue = newHue
-		lights[i].custom_saturation = newSaturation
-		lights[i].custom_kelvin = newKelvin
+		lights[i].setColorAndState(newHue, newSaturation, newBrightness, newKelvin, duration)
 	}
 }
 
@@ -122,13 +123,32 @@ var setAllLightsPowerStatus = function(on) {
 	})
 }
 
-// var getLightSnapshots = function() {
-// 	var lightSnapshotArray = []
-// 	for (var i = 0; i < lights.length, i++) {
-// 		lightSnapshotArray.push(new lightSnapshot(lights[i].custom_brightness), lights[i].custom_hue, lights[i].custom_saturation, lights[i].custom_kelvin)
-// 	}
-// 	return lightSnapshotArray
-// }
+var getLightSnapshots = function() {
+	var lightSnapshotArray = []
+	for (var i = 0; i < lights.length; i++) {
+		lightSnapshotArray.push(new lightSnapshot(lights[i].custom_brightness, lights[i].custom_hue, lights[i].custom_saturation, lights[i].custom_kelvin))
+	}
+	return lightSnapshotArray
+}
+
+var savedStates = {}
+
+var saveLightsState = function(saveName) {
+	savedStates[saveName] = getLightSnapshots()
+}
+
+var loadLightsState = function(saveName) {
+	var lightSnapshotArray = savedStates[saveName]
+	for (var i = 0; i < lightSnapshotArray.length; i++) {
+		var lightSnapshot = lightSnapshotArray[i]
+		var newHue = lightSnapshot.hue
+		var newSaturation = lightSnapshot.saturation
+		var newBrightness = lightSnapshot.brightness
+		var newKelvin = lightSnapshot.kelvin
+
+		lights[i].setColorAndState(newHue, newSaturation, newBrightness, newKelvin, 500)
+	}
+}
 
 var lightSnapshot = function(brightness, hue, saturation, kelvin) {
 	this.brightness = brightness
@@ -143,6 +163,54 @@ var clampValue = function(val, min, max) {
 	return val
 }
 
+var isRotatingColors = false
+var lightTimout = null
+
+var startRotatingColors = function(duration, delay) {
+	if (!isRotatingColors && !djManager.isListening()) {
+		isRotatingColors = true
+		rotateColors(duration, delay)
+	}
+}
+
+var stopRotatingColors = function() {
+	isRotatingColors = false
+	if (lightTimout != null) {
+		clearTimeout(lightTimout) 
+		lightTimout = null
+	}
+}
+
+var rotateColors = function(duration, delay) {
+	if (isRotatingColors) {
+		
+		var tallLamp = getLightByName("Tall Lamp")
+		var tableLamp = getLightByName("Table Lamp")
+		var shadeLamp = getLightByName("Shade Cylinder")
+		var kitchenLamp = getLightByName("Kitchen")
+		var entranceLamp = getLightByName("Entrance")
+
+		var cHue = tallLamp.custom_hue
+		var cSat = tallLamp.custom_saturation
+		var cBri = tallLamp.custom_brightness
+		var cKel = tallLamp.custom_kelvin
+
+		tallLamp.setColorAndState(tableLamp.custom_hue, tableLamp.custom_saturation, tableLamp.custom_brightness, duration, tableLamp.custom_kelvin)
+
+		tableLamp.setColorAndState(shadeLamp.custom_hue, shadeLamp.custom_saturation, shadeLamp.custom_brightness, duration, shadeLamp.custom_kelvin)
+
+		shadeLamp.setColorAndState(kitchenLamp.custom_hue, kitchenLamp.custom_saturation, kitchenLamp.custom_brightness, duration, kitchenLamp.custom_kelvin)
+
+		kitchenLamp.setColorAndState(entranceLamp.custom_hue, entranceLamp.custom_saturation, entranceLamp.custom_brightness, duration, entranceLamp.custom_kelvin)
+
+		entranceLamp.setColorAndState(cHue, cSat, cBri, duration, cKel)
+
+		lightTimout = setTimeout(function() {
+			rotateColors(duration, delay)
+		}, duration + delay)
+	}
+}
+
 exports.manager = lightManager
 exports.setColorForAllLights = setColorForAllLights
 exports.setHexColorForAllLights = setHexColorForAllLights
@@ -151,7 +219,13 @@ exports.addColorForAllLights = addColorForAllLights
 exports.setColorForLightByName = setColorForLightByName
 exports.setLightsPowerStatus = setLightsPowerStatus
 exports.setAllLightsPowerStatus = setAllLightsPowerStatus
+exports.saveLightsState = saveLightsState
+exports.loadLightsState = loadLightsState
+exports.startRotatingColors = startRotatingColors
+exports.stopRotatingColors = stopRotatingColors
+exports.setBrightnessForLightByName = setBrightnessForLightByName
 
+var djManager = require('./djManager')
 
 /**
 Tall Lamp

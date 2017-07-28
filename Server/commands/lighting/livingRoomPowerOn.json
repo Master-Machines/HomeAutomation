@@ -1,6 +1,6 @@
 {
-	"name": "living room power on",
-	"triggerWords": ["living", "room", "on"],
+	"name": "main room power on",
+	"triggerWords": ["main", "on"],
 	"sequences": [
 		{
 			"type": "logic",

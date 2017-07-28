@@ -12,6 +12,11 @@ var playAudioFile = function(songFile) {
 	player.play(function(err, player){
 	  console.log('playend!');
 	});
+
+	player.on('error', function(err){
+	  // when error occurs 
+	  console.log(err);
+	});
 	// player.play(filePath, function(err){
 	// 	if (err) console.log(err)
 	// })

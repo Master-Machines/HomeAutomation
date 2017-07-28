@@ -1,6 +1,6 @@
 {
-	"name": "fireplace",
-	"triggerWords": ["fireplace"],
+	"name": "purple haze",
+	"triggerWords": ["purple", "haze"],
 	"sequences": [
 		{
 			"type": "logic",
@@ -10,37 +10,37 @@
 			"type": "lighting",
 			"duration": 0,
 			"lightName": "Tall Lamp",
-			"color": { "hue": 25, "saturation": 25, "brightness": 50, "kelvin": 2500}
+			"color": { "hue": 255, "saturation": 100, "brightness": 85, "kelvin": 2500}
 		},
 		{
 			"type": "lighting",
 			"duration": 0,
 			"lightName": "Table Lamp",
-			"color": { "hue": 25, "saturation": 25, "brightness": 40, "kelvin": 2500}
+			"color": { "hue": 260, "saturation": 100, "brightness": 90, "kelvin": 2500}
 		},
 		{
 			"type": "lighting",
 			"duration": 0,
 			"lightName": "Shade Cylinder",
-			"color": { "hue": 25, "saturation": 25, "brightness": 50, "kelvin": 2500}
-		},
-		{
-			"type": "lighting",
-			"duration": 0,
-			"lightName": "Entrance",
-			"color": { "hue": 25, "saturation": 25, "brightness": 60, "kelvin": 2500}
+			"color": { "hue": 260, "saturation": 100, "brightness": 95, "kelvin": 2500}
 		},
 		{
 			"type": "lighting",
 			"duration": 0,
 			"lightName": "Kitchen",
-			"color": { "hue": 25, "saturation": 25, "brightness": 50, "kelvin": 2500}
+			"color": { "hue": 260, "saturation": 100, "brightness": 90, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Entrance",
+			"color": { "hue": 265, "saturation": 100, "brightness": 85, "kelvin": 2500}
 		},
 		{
 			"type": "logic",
 			"functionName": "rotateColors",
 			"duration": 1000,
-			"delay": 0,
+			"delay": 500,
 			"startTime": 1000
 		}
 	]

@@ -1,0 +1,17 @@
+{
+	"name": "color rotation",
+	"triggerWords": ["party", "speed"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "stopRotating"
+		},
+		{
+			"type": "logic",
+			"functionName": "rotateColors",
+			"duration": 5000,
+			"delay": 0,
+			"startTime": 10
+		}
+	]
+}

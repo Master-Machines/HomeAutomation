@@ -1,11 +1,47 @@
 {
 	"name": "candles",
-	"triggerWords": ["candle"],
+	"triggerWords": ["candle", "light"],
 	"sequences": [
 		{
+			"type": "logic",
+			"functionName": "stopRotating"
+		},
+		{
 			"type": "lighting",
-			"duration": 3000,
-			"color": { "hue": 0, "saturation": 0, "brightness": 10, "kelvin": 2500}
+			"duration": 0,
+			"lightName": "Tall Lamp",
+			"color": { "hue": 10, "saturation": 10, "brightness": 10, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Table Lamp",
+			"color": { "hue": 10, "saturation": 10, "brightness": 7, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Shade Cylinder",
+			"color": { "hue": 10, "saturation": 10, "brightness": 10, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Entrance",
+			"color": { "hue": 10, "saturation": 10, "brightness": 12, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Kitchen",
+			"color": { "hue": 10, "saturation": 10, "brightness": 10, "kelvin": 2500}
+		},
+		{
+			"type": "logic",
+			"functionName": "rotateColors",
+			"duration": 600,
+			"delay": 100,
+			"startTime": 1000
 		}
 	]
 }

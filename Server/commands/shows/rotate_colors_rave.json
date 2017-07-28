@@ -1,0 +1,17 @@
+{
+	"name": "color rotation",
+	"triggerWords": ["rave", "speed"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "stopRotating"
+		},
+		{
+			"type": "logic",
+			"functionName": "rotateColors",
+			"duration": 500,
+			"delay": 100,
+			"startTime": 10
+		}
+	]
+}

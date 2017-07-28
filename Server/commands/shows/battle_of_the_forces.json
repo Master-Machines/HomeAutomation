@@ -1,0 +1,102 @@
+{
+	"name": "star wars battle",
+	"triggerWords": ["duel", "fate"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "stopRotating"
+		},
+		{
+			"type": "logic",
+			"functionName": "playAudioFile",
+			"fileName": "duel_of_fates.mp3"
+		},
+		{
+			"type": "logic",
+			"functionName": "playAudioFile",
+			"fileName": "lightsabers.mp3"
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Tall Lamp",
+			"color": { "hue": 240, "saturation": 100, "brightness": 100, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Table Lamp",
+			"color": { "hue": 240, "saturation": 100, "brightness": 100, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Shade Cylinder",
+			"color": { "hue": 240, "saturation": 100, "brightness": 100, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Kitchen",
+			"color": { "hue": 0, "saturation": 100, "brightness": 90, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Entrance",
+			"color": { "hue": 0, "saturation": 100, "brightness": 95, "kelvin": 2500}
+		},
+		{
+			"type": "logic",
+			"functionName": "rotateColors",
+			"duration": 0,
+			"delay": 1000,
+			"startTime": 3000
+		},
+		{
+			"type": "logic",
+			"functionName": "rotateColors",
+			"duration": 0,
+			"delay": 750,
+			"startTime": 7000
+		},
+		{
+			"type": "logic",
+			"functionName": "rotateColors",
+			"duration": 0,
+			"delay": 500,
+			"startTime": 10000
+		},
+		{
+			"type": "logic",
+			"functionName": "rotateColors",
+			"duration": 0,
+			"delay": 400,
+			"startTime": 12000
+		},
+		{
+			"type": "logic",
+			"functionName": "rotateColors",
+			"duration": 0,
+			"delay": 300,
+			"startTime": 13000
+		},
+		{
+			"startTime": 20000,
+			"type": "logic",
+			"functionName": "playAudioFile",
+			"fileName": "sand.mp3"
+		},
+		{
+			"startTime": 20200,
+			"type": "lighting",
+			"duration": 5000,
+			"color": { "hue": 0, "saturation": 100, "brightness": 100, "kelvin": 3000}
+		},
+		{
+			"startTime": 20400,
+			"type": "logic",
+			"functionName": "stopRotating"
+		}
+	]
+}

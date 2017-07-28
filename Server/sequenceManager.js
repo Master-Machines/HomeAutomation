@@ -3,6 +3,7 @@ var csscolors = require('css-color-names')
 var lightManager = require('./lightManager')
 var voiceManager = require('./voiceManager')
 var audioManager = require('./audioManager')
+var djManager = require('./djManager')
 
 var sequenceManager = (function() {
 	var colors = []
@@ -90,9 +91,34 @@ logicFunctions.allTheLightsPower = function(sequence) {
 }
 
 logicFunctions.saveLightState = function(sequence) {
-
+	lightManager.saveLightsState(sequence.data.saveName)
 }
 
+logicFunctions.loadLightState = function(sequence) {
+	lightManager.loadLightsState(sequence.data.saveName)
+}
+
+logicFunctions.rotateColors = function(sequence) {
+	lightManager.stopRotatingColors()
+	lightManager.startRotatingColors(sequence.data.duration, sequence.data.delay)
+	voiceManager.clearSpeechStack()
+}
+
+logicFunctions.stopRotating = function(sequence) {
+	lightManager.stopRotatingColors()
+	voiceManager.clearSpeechStack()
+}
+
+logicFunctions.enableVolumeBrightness = function(sequence) {
+	lightManager.stopRotatingColors()
+	voiceManager.clearSpeechStack()
+	djManager.listen()
+}
+
+logicFunctions.disableVolumeBrightness = function(sequence) {
+	voiceManager.clearSpeechStack()
+	djManager.stopListening()
+}
 
 
 exports.manager = sequenceManager
