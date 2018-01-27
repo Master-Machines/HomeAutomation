@@ -10,18 +10,41 @@
 //     childProcess.spawn = mySpawn;
 // })();
 
-var express = require('express')
-var app = express()
-var server = require('http').Server(app)
-var io = require('socket.io')(server)
+
 var lightManager = require('./lightManager')
 var commandManager = require('./commandManager')
 var voiceManager = require('./voiceManager')
 var djManager = require('./djManager')
+
+
+const express = require('express')
+const app = express()
 app.use(express.static(__dirname + '/public'))
-io.on('connection', function(){ 
-	console.log("NEW CONNECTION")
-});
-server.listen(5000);
 
+app.get('/', function (req, res) {
+  res.sendFile(__dirname  + '/public/commandList.html')
+})
 
+app.get('/gamepad', function (req, res) {
+	res.sendFile(__dirname + '/public/gamepad-controls.html')
+})
+
+app.get('/dnd', function (req, res) {
+	res.sendFile(__dirname + '/public/dnd.html')
+})
+
+app.get('/commands', function (req, res) {
+	console.log(commandManager.commandList())
+	res.json(commandManager.commandList())
+})
+
+app.get('/commands/play', function(req, res) {
+	var commandToPlay = req.query.command
+	console.log("Playing from webapp command: " + commandToPlay)
+	commandManager.playCommandFromName(commandToPlay)
+	res.end()
+})
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!')
+})

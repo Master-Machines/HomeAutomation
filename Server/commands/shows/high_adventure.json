@@ -1,0 +1,56 @@
+{
+	"name": "high adventure",
+	"triggerWords": ["roll", "initiative"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "turnOffThor"
+		},
+		{
+			"type": "lighting",
+			"duration": 600,
+			"color": { "hue": 0, "saturation": 0, "brightness": 10, "kelvin": 2500}
+		},
+		{
+			"startTime": 1500,
+			"type": "logic",
+			"functionName": "playAudioFile",
+			"fileName": "high_adventure.mp3"
+		},
+		{
+			"startTime": 7200,
+			"type": "lighting",
+			"duration": 150,
+			"lightName": "Tall Lamp",
+			"color": { "hue": 0, "saturation": 0, "brightness": 80, "kelvin": 2500}
+		},
+		{
+			"startTime": 7500,
+			"type": "lighting",
+			"duration": 150,
+			"lightName": "Table Lamp",
+			"color": { "hue": 0, "saturation": 0, "brightness": 80, "kelvin": 2500}
+		},
+		{
+			"startTime": 7800,
+			"type": "lighting",
+			"duration": 150,
+			"lightName": "Shade Cylinder",
+			"color": { "hue": 0, "saturation": 0, "brightness": 80, "kelvin": 2500}
+		},
+		{
+			"startTime": 8100,
+			"type": "lighting",
+			"duration": 150,
+			"lightName": "Kitchen",
+			"color": { "hue": 0, "saturation": 0, "brightness": 80, "kelvin": 2500}
+		},
+		{
+			"startTime": 8400,
+			"type": "lighting",
+			"duration": 150,
+			"lightName": "Entrance",
+			"color": { "hue": 0, "saturation": 0, "brightness": 80, "kelvin": 2500}
+		}
+	]
+}

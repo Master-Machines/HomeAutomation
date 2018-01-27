@@ -1,0 +1,11 @@
+{
+	"name": "d10",
+	"triggerWords": ["roll", "d10"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "rollDice",
+			"maxNumber": 10
+		}
+	]
+}

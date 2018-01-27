@@ -1,0 +1,22 @@
+{
+	"name": "crit failure",
+	"triggerWords": ["critical", "failure"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "saveLightState",
+			"saveName": "saveName"
+		},
+		{
+			"duration": 0,
+			"type": "lighting",
+			"color": { "hue": 360, "saturation": 100, "brightness": 100, "kelvin": 9000}
+		},
+		{
+			"startTime": 800,
+			"type": "logic",
+			"functionName": "loadLightState",
+			"saveName": "saveName"
+		}
+	]
+}

@@ -19,7 +19,9 @@
     "node-record-lpcm16": "*",
     "play-sound": "*",
     "socket.io": "*",
-    "yargs": "*"
+    "yargs": "*",
+    "say": "*",
+    "node-lifx": "git@github.com:node-lifx/develop.git"
   },
   "engines": {
     "node": "0.10.x"

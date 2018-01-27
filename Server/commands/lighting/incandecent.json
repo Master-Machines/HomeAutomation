@@ -8,8 +8,33 @@
 		},
 		{
 			"type": "lighting",
-			"duration": 2000,
-			"color": { "hue": 0, "saturation": 0, "brightness": 50, "kelvin": 3000}
+			"duration": 0,
+			"lightName": "Tall Lamp",
+			"color": { "hue": 0, "saturation": 0, "brightness": 100, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Table Lamp",
+			"color": { "hue": 0, "saturation": 0, "brightness": 85, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Shade Cylinder",
+			"color": { "hue": 0, "saturation": 0, "brightness": 70, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Entrance",
+			"color": { "hue": 0, "saturation": 0, "brightness": 100, "kelvin": 2500}
+		},
+		{
+			"type": "lighting",
+			"duration": 0,
+			"lightName": "Kitchen",
+			"color": { "hue": 0, "saturation": 0, "brightness": 70, "kelvin": 2500}
 		}
 	]
 }

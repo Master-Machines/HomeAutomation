@@ -5,7 +5,7 @@
 		{
 			"type": "logic",
 			"functionName": "addWarmth",
-			"quantity": -1500
+			"quantity": -400
 		}
 	]
 }

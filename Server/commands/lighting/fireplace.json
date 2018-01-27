@@ -10,38 +10,31 @@
 			"type": "lighting",
 			"duration": 0,
 			"lightName": "Tall Lamp",
-			"color": { "hue": 25, "saturation": 25, "brightness": 50, "kelvin": 2500}
+			"color": { "hue": 0, "saturation": 0, "brightness": 40, "kelvin": 2500}
 		},
 		{
 			"type": "lighting",
 			"duration": 0,
 			"lightName": "Table Lamp",
-			"color": { "hue": 25, "saturation": 25, "brightness": 40, "kelvin": 2500}
+			"color": { "hue": 0, "saturation": 0, "brightness": 68, "kelvin": 2500}
 		},
 		{
 			"type": "lighting",
 			"duration": 0,
 			"lightName": "Shade Cylinder",
-			"color": { "hue": 25, "saturation": 25, "brightness": 50, "kelvin": 2500}
+			"color": { "hue": 0, "saturation": 0, "brightness": 37, "kelvin": 2500}
 		},
 		{
 			"type": "lighting",
 			"duration": 0,
 			"lightName": "Entrance",
-			"color": { "hue": 25, "saturation": 25, "brightness": 60, "kelvin": 2500}
+			"color": { "hue": 0, "saturation": 0, "brightness": 60, "kelvin": 2500}
 		},
 		{
 			"type": "lighting",
 			"duration": 0,
 			"lightName": "Kitchen",
-			"color": { "hue": 25, "saturation": 25, "brightness": 50, "kelvin": 2500}
-		},
-		{
-			"type": "logic",
-			"functionName": "rotateColors",
-			"duration": 1000,
-			"delay": 0,
-			"startTime": 1000
+			"color": { "hue": 0, "saturation": 0, "brightness": 60, "kelvin": 2500}
 		}
 	]
 }

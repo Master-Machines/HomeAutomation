@@ -1,6 +1,8 @@
 const encoding = 'LINEAR16';
 const sampleRateHertz = 16000;
 const languageCode = 'en-US';
+const say = require('say');
+
 var config = {
   encoding: encoding,
   sampleRateHertz: sampleRateHertz,
@@ -38,8 +40,7 @@ var voiceManager = function() {
 				    .then((results) => {
 				      const transcription = results[0];
 				      addToSpeechStack(transcription)
-				      if(transcription.length > 0) console.log("you: " + `${transcription}`);
-				      console.log(getTotalSpeechStack())
+				      if(transcription.length > 0) console.log(`${transcription}`);
 				      commandManager.detectCommands(getTotalSpeechStack())
 				    })
 				    .catch((err) => {
@@ -57,7 +58,7 @@ var voiceManager = function() {
 			asRaw: false
 		}).pipe(file)
 
-		setTimeout(function(){ if(isRecording) record.stop() }, 3000)
+		setTimeout(function(){ if(isRecording) record.stop() }, 4000)
 		if(counter >= maxBufferHistory) counter = 0
 	}
 
@@ -65,8 +66,7 @@ var voiceManager = function() {
 		return "./voice_recog_samples/" + baseName + counter + ".wav"
 	}
 
-	streamingMicRecognize("sampleOne", 0)
-	setTimeout(function() {streamingMicRecognize("sampleTwo", 0)}, 1500)
+	streamingMicRecognize("sample", 0)
 }
 
 var addToSpeechStack = function(data) {
@@ -98,7 +98,7 @@ var addSpeechContextWords = function(arrayOfWords) {
 	})
 }
 
-addSpeechContextWords(['1','2','3', '4', '5', '10', '20', '25', '30', '35', '40', '45', '50', '55', '60', '65', '70', '75', '80', '85', '90', '95', '100'])
+addSpeechContextWords(['1','2','3', '5', '10', '20', '25', '30', '35', '40', '45', '50', '55', '60', '65', '70', '75', '80', '85', '90', '95', '100'])
 
 exports.manager = voiceManager();
 exports.clearSpeechStack = clearSpeechStack

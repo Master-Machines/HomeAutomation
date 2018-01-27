@@ -4,8 +4,12 @@
 	"sequences": [
 		{
 			"type": "logic",
+			"functionName": "stopRotating"
+		},
+		{
+			"type": "logic",
 			"functionName": "addBrightness",
-			"quantity": 15
+			"quantity": 4
 		}
 	]
 }

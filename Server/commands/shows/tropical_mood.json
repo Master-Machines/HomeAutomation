@@ -8,40 +8,33 @@
 		},
 		{
 			"type": "lighting",
-			"duration": 0,
+			"duration": 2000,
 			"lightName": "Tall Lamp",
-			"color": { "hue": 180, "saturation": 100, "brightness": 100, "kelvin": 2500}
+			"color": { "hue": 205, "saturation": 100, "brightness": 100, "kelvin": 2500}
 		},
 		{
 			"type": "lighting",
-			"duration": 0,
+			"duration": 2000,
 			"lightName": "Table Lamp",
-			"color": { "hue": 115, "saturation": 100, "brightness": 100, "kelvin": 2500}
+			"color": { "hue": 135, "saturation": 100, "brightness": 100, "kelvin": 2500}
 		},
 		{
 			"type": "lighting",
-			"duration": 0,
+			"duration": 2000,
 			"lightName": "Shade Cylinder",
-			"color": { "hue": 190, "saturation": 100, "brightness": 100, "kelvin": 2500}
+			"color": { "hue": 170, "saturation": 100, "brightness": 85, "kelvin": 2500}
 		},
 		{
 			"type": "lighting",
-			"duration": 0,
+			"duration": 2000,
 			"lightName": "Kitchen",
-			"color": { "hue": 145, "saturation": 100, "brightness": 90, "kelvin": 2500}
+			"color": { "hue": 175, "saturation": 100, "brightness": 80, "kelvin": 2500}
 		},
 		{
 			"type": "lighting",
-			"duration": 0,
+			"duration": 2000,
 			"lightName": "Entrance",
-			"color": { "hue": 125, "saturation": 100, "brightness": 95, "kelvin": 2500}
-		},
-		{
-			"type": "logic",
-			"functionName": "rotateColors",
-			"duration": 2500,
-			"delay": 0,
-			"startTime": 1000
+			"color": { "hue": 130, "saturation": 100, "brightness": 95, "kelvin": 2500}
 		}
 	]
 }

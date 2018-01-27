@@ -1,0 +1,10 @@
+{
+	"name": "fallen hereos",
+	"triggerWords": ["tribute", "fallen"],
+	"sequences": [
+		{
+			"type": "logic",
+			"functionName": "fallenHeroes"
+		}
+	]
+}
